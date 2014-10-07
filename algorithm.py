@@ -1,8 +1,9 @@
 #Algorithm Test
 
 users = {
-"Tom":{"Burgers":"L","Mexican":"D","Pie":"F","Indian":"F","Italian":"F"},
-"Beth":{"Burgers":"L","Mexican":"F","Pie":"F","Indian":"F"}
+"Tom":{"Burgers":1,"Mexican":-1,"Pie":2,"Indian":2,"Italian":2},
+"Beth":{"Burgers":1,"Mexican":2,"Pie":2,"Indian":2},
+"George":{"Burgers":
 }
 
 def addUser(username):
