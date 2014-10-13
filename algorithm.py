@@ -42,7 +42,8 @@ def userMatch(username):
             for key in temp:            # For resturant rating pairs of the user that isnt the entered username
                 try:
                     otherUsersMatchScore[name] = otherUsersMatchScore[name] + (1 * temp[key] * user[key])  # scores the entered users similarity to other users by summing the overlaps in rating. Essentially. (both like it (1,1) adds one to score, one likes other dislikes subtracts one)
-                except KeyError: # hits this when the User has not also been to the resturant. Essentially does nothing. 
+                except KeyError:
+                    print("keyerror")   # hits this when the User has not also been to the resturant. Essentially does nothing. 
     print(otherUsersMatchScore)
     reccommend(otherUsersMatchScore)
               
