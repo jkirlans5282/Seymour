@@ -42,8 +42,7 @@ def userMatch(username):
             for key in temp:            # For resturant rating pairs of the user that isnt the entered username
                 try:
                     otherUsersMatchScore[name] = otherUsersMatchScore[name] + (1 * temp[key] * user[key])  # scores the entered users similarity to other users by summing the overlaps in rating. Essentially. (both like it (1,1) adds one to score, one likes other dislikes subtracts one)
-                except KeyError:
-                    print("keyerror")   # hits this when the User has not also been to the resturant. Essentially does nothing. 
+                except KeyError: # hits this when the User has not also been to the resturant. Essentially does nothing. 
     print(otherUsersMatchScore)
     reccommend(otherUsersMatchScore)
               
@@ -55,9 +54,8 @@ def reccommend(otherUsersMatchScore):
         ratings = users[key] #looks at their ratings
         for key in ratings:
             try:
-                restaurants[key] = restaurants[key] + weight * ratings[key]
-            except KeyError:                                                    # catch key error, and value it = weight? why? will it ever hit this?
-                print("Rkeyerror")
+                restaurants[key] = restaurants[key] + weight * ratings[key] 
+            except KeyError:                                                 
                 restaurants[key] = weight
     print(restaurants)
             
