@@ -1,9 +1,10 @@
 #Algorithm Test
 
 users = {
-"Tom":{"Burgers":1,"Mexican":-1,"Pie":2,"Indian":2,"Italian":2},
-"Beth":{"Burgers":1,"Mexican":2,"Pie":2,"Indian":2},
-"George":{"Burgers":
+"Tom":{"A":1,"B":1,"C":0,"D":-1,"H":1,"F":1},
+"Beth":{"A":1,"D":-1,"E":1},
+"Mike":{"B":1,"E":1,"H":1},
+"Emma":{"D":1,"G":0,"E":1}
 }
 
 def addUser(username):
@@ -11,6 +12,12 @@ def addUser(username):
 
 def addRestaurant(restaurant,username):
     preference = raw_input("[F]avorite, [L]iked, [D]isliked?  ")
+    if preference == "F":
+        preference = 1
+    elif preference == "L":
+        preference = 0
+    elif preference == "D":
+        preference = -1
     temp = users[username]
     temp[restaurant] = preference
     users[username] = temp
@@ -25,14 +32,7 @@ def userMatch(username):
             matchscore[name] = 0
             for key in temp:
                 try:
-                    if temp[key] == "F" and user[key] == "F":
-                        matchscore[name] = matchscore[name] + 1
-                    elif temp[key] == "D" and user[key] == "F":
-                        matchscore[name] = matchscore[name] - 1
-                    elif temp[key] == "F" and user[key] == "D":
-                        matchscore[name] = matchscore[name] - 1
-                    elif temp[key] == "D" and user[key] == "D":
-                        matchscore[name] = matchscore[name] + 1
+                    matchscore[name] = matchscore[name] + (1 * temp[key] * user[key])
                 except KeyError:
                     print("")
     print(matchscore)
@@ -45,16 +45,10 @@ def reccommend(matchscore):
         weight = matchscore[key]
         ratings = users[key]
         for key in ratings:
-            if ratings[key] == "F":
-                try:
-                    restaurants[key] = restaurants[key] + weight
-                except KeyError:
-                    restaurants[key] = weight
-            elif ratings[key] == "D":
-                try:
-                    restaurants[key] = restaurants[key] - weight
-                except KeyError:
-                    restaurants[key] = 0 - weight
+            try:
+                restaurants[key] = restaurants[key] + weight * ratings[key]
+            except KeyError:
+                restaurants[key] = weight
     print(restaurants)
             
 
