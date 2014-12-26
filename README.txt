@@ -1,1 +1,2 @@
-Ai learning for resturant recomendations. Still in infant stages.
+Ai learning for resturant recomendations. Just kicking around ideas. 
+
